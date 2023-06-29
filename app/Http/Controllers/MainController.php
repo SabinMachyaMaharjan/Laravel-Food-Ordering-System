@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\WriteFileJob;
 use Illuminate\Http\Request;
 use App\Services\SliderService;
 use App\Services\VendorService;
@@ -41,6 +42,16 @@ class MainController extends Controller
         // }
         $products = $productsRes['products'];
         //dd($products);
-        return view('pages.restaurantsDetail',compact('vendor'));
+        return view('pages.restaurantsDetail',compact('vendor','products'));
+    }
+    public function dispatchJob()
+    {
+        WriteFileJob::dispatch();
+    }
+    public function getActiveCartItem()
+    {
+        if(auth()->check()){
+            //$cart=$this->cartService->getUsersCart(auth()->);
+        }
     }
 }

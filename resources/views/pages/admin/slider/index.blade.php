@@ -1,12 +1,16 @@
 @extends('layouts.grandLayout')
 @section('page-specific-css')
     <!-- DataTables -->
-  <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <!-- <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-  <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}"> -->
 @endsection
 @section('dashboard-content')
-<div class="container-fluid">
+@php
+    $breadcrumb=['Dashboard'=>route('dashboard'),'Sliders'=>'#'];
+  @endphp
+  @include('include.grand.breadcrumbs',['breadcrumb'=>$breadcrumb])
+<div class="container-fluid py-3">
 <div class="card">
               <div class="card-header d-flex justify-content-end">
                 <a href="{{route('slider.create')}}" class="btn btn-success">Add Slider</a>
@@ -36,11 +40,11 @@
                                 </td>
                                 <td>{{$slider->slider_text}}</td>
                                 <td class="d-flex ">
-                                  <a href="slider/{{$slider->id}}/edit" class="btn btn-info mr-4">Edit</a>
-                                  <form action="{{route('slider.destroy',$slider->id)}}" id="sldier-delete-form" method="post">
+                                  <a href="admin/slider/{{$slider->id}}/edit" class="btn btn-info mr-4">Edit</a>
+                                  <form action="{{route('slider.destroy',$slider->id)}}" id="slider-delete-form" method="post">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger" type="submit" onClick="sweetAlertConfirm(event), {{$slider->id}}">Delete</button>
+                                    <button class="btn btn-danger" type="submit" onclick="sweetAlertConfirm(event),{{$slider->id}}">Delete</button>
                                   </form>
                                 </td>
                             </tr>

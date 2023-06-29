@@ -25,15 +25,41 @@
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+  <!--  Other Bootstrap 5.0.2 CSS -->
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.rtl.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.rtl.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.grid.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.grid.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.grid.rtl.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.grid.rtl.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.reboot.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.reboot.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.reboot.rtl.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.reboot.rtl.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.utilities.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.utilities.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.utilities.rtl.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/bootstrap.utilities.rtl.min.css')}}">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" integrity="sha512-gMjQeDaELJ0ryCI+FtItusU9MkAifCZcGq789FrzkiM49D8lbDhoaUaIX4ASU187wofMNlgBJ4ckbrXM9sE6Pg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css" integrity="sha512-IejtbqJqhyw0pAfIGrqsO/+9McIyWp3zwz9Y0oKOpsSo9XHOCWwPcS6ezTpdDG5ZIkmMdvkkd1eq7C56fRqYxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
   @yield('page-specific-css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+  </div> -->
 
 @include('include.grand.navbar')
 @include('include.grand.sidebar')
@@ -89,10 +115,29 @@
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
+<!-- <script src="{{asset('dist/js/adminlte.min.js')}}"></script> -->
+
 <!-- AdminLTE for demo purposes -->
-{{-- <script src="{{asset('dist/js/demo.js')}}"></script> --}}
+<!-- {{-- <script src="{{asset('dist/js/demo.js')}}"></script> --}} -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-{{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
+<!-- {{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}} -->
+<!-- Others JS BootStrap 5.0.2 -->
+<script src="{{asset('dist/js/bootstrap.js')}}"></script>
+<script src="{{asset('dist/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('dist/js/bootstrap.bundle.js')}}"></script>
+<script src="{{asset('dist/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('dist/js/bootstrap.esm.js')}}"></script>
+<script src="{{asset('dist/js/bootstrap.esm.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/cjs/popper.min.js" integrity="sha512-pPMH8RM+mnjHk8orl1wXPrbsUZrpmIQDkU6s0PMdNB/OItHAu0pn4d4FoY/4BBa3Gj6iMafbgTYgdNV6nwM8Hw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <!-- Custom CSS -->
 @yield('page-specific-js')
 </body>
 </html>

@@ -38,11 +38,11 @@
                             <td>{{$product->status}}</td>
                             <td class="d-flex ">
                                 <a href="product/{{$product->id}}/edit" class="btn btn-success mr-4">Edit</a>
-                                <form action="{{route('product.destroy',$product->id)}}" id="sldier-delete-form" method="post">
+                                <form action="{{route('product.destroy',$product->id)}}" id="slider-delete-form" method="post">
                                     @method('DELETE')
                                      @csrf
                                     <button class="btn btn-danger" type="submit"
-                                        onClick="sweetAlertConfirm(event), {{$product->id}}">Delete</button>
+                                        onclick="sweetAlertConfirm(event), {{$product->id}}">Delete</button>
                                 </form>
                             </td>
                         </tr>

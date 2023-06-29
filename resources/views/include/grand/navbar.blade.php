@@ -38,21 +38,21 @@
       </li>
 
       <!-- Messages Dropdown Menu -->
-      {{-- <li class="nav-item dropdown">
+       <!-- <li class="nav-item dropdown">
         <button type="button" class="btn btn-primary position-relative">
-          Inbox
+        <i class="fa-sharp fa-solid fa-cart-shopping"></i>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            99+
-            <span class="visually-hidden">unread messages</span>
+            9
+            <span class="visually-hidden"></span>
           </span>
         </button>
-      </li> --}}
+      </li>  -->
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown d-flex align-self-center me-2">
         <a href="#" class="position-relative">
           <i class="fa-solid fa-cart-plus"></i>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            99+
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
+            
             <span class="visually-hidden">Cart</span>
           </span>
         </a>
@@ -65,7 +65,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('dashboard')}}" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 

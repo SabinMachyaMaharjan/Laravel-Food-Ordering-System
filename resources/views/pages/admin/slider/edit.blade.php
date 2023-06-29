@@ -37,5 +37,6 @@
         title: 'Slider Updated!',
         icon: 'warning',
     });
+  }
   </script>   
 @endsection

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+
 
 class RegisterController extends Controller
 {
@@ -64,12 +68,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        //return 
+        $user=User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' => $data['role_id'],
             'is_vendor' => isset($data['is_vendor'])?1:0
         ]);
-    }
+        $success['token']= $user->createToken($user->username .$user->id)->accessToken; 
+        $success['name'] =$user->name;
+        Session::put('token', $success['token']); 
+        Session::put('user', $success['name']); 
+        //return $this->sendResponse($success, 'User register successfully.');
+        return $user;
 }
+
+// public function login (Request $request)
+// {
+//    if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+//        $user= Auth::user();
+//         $success['token'] =$user->createToken($user->username . $user->id)-> accessToken; 
+//         $success['name']= $user->username;
+//      Session::put('token', $success['token']); 
+//      Session::put('user', $success['name']); 
+//     //  return redirect('/');
+//     return $this->authenticated();
+//    }
+//  }
+ }

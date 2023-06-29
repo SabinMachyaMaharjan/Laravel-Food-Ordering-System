@@ -1,3 +1,10 @@
+@php
+if(auth()->check())
+{
+ $cart_count = getCartItemsCount();
+}
+@endphp
+<!-- //getCartItemsCount(auth()->user()->id); -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
       <!-- {{config('app.name')}} -->
@@ -12,8 +19,14 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Restaurants</a>
+            <a class="nav-link" href="{{route('restaurant')}}">Restaurants</a>
         </li>
+        <!-- <li class="nav-item active">
+            <a class="nav-link" href="{{route('dashboard')}}">Dashboard</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{route('logout')}}">Logout</a>
+        </li> -->
         <!-- <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
         </li>
@@ -22,7 +35,7 @@
         </li> -->
         </ul>
         <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto" style="float:right;">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -41,14 +54,15 @@
                             <a href="#" class="position-relative">
                               <i class="fa-solid fa-cart-plus"></i>
                               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                99+
+                              {{$cart_count}}
                                 <span class="visually-hidden">Cart</span>
                               </span>
                             </a>
-                          </li>                          
+                          </li>           
+                                    
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }}
+                                    {{ auth()->user()->username }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

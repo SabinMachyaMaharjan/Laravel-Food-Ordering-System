@@ -9,6 +9,10 @@ class ProductService
     {
         return Product::all();
     }
+    public function findByProductId($id)
+    {
+    return Product::find($id);
+    }
     public function findAllProductsByUserId($userid)
     {
         return Product::where('user_id',$userid)->get();
@@ -70,11 +74,11 @@ class ProductService
     {
         try{
             $products = Product::where('user_id',$userid)->get();
-            return['status'=>'success','message'=>'Product is fetched successfully.','products'=>$e->getMessage()];
+            return['status'=>'success','message'=>'Product is fetched successfully.','products'=>$products->getMessage()];
         } catch (\Throwable $e) {
             Log::channel('product_error')->error($e->getMessage());
             //Log::error($e->getMessage());
             return ['status'=>'error','message'=>$e->getMessage(),'products'=>[]];   
         }
     }
-}
+}  

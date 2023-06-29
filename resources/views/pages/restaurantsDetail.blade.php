@@ -23,9 +23,15 @@
                                             NRP {{number_format($item->price, 2)}} |-
                                         </strong>
                                     </div>
-                                    <button class="ms-3 btn btn-sm btn-info" onClick="addToCart({{$item->id}})">
-                                        <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                                    @guest
+                                        <a href="/login" class="rs-3 btn" title="Add to cart"> 
+                                            <i class="fa fa-cart-plus text-success"></i>
+                                    @else
+                                    <button class="ms-3 btn btn-sm btn-info" onclick="addToCart({{$item->id}})" title="Add to cart">
+                                        <i class="fa-sharp fa-solid fa-cart-shopping text-success"></i>
                                     </button>
+                                    <input type="hidden" value="{{Session::get('token')}}" id="accessToken"> 
+@endif
                                 </div>    
                             </div>
                         @endforeach

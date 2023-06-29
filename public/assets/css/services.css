@@ -1,0 +1,217 @@
+.service {
+  background: url('../images/back2.svg') no-repeat;
+  height: 950px;
+  top: 0px;
+  background-size: auto 660px;
+}
+
+.img_service {
+  object-fit: contain;
+  width: 300px;
+  height: 450px;
+  position: relative;
+  left: 181px;
+  top: 25px;
+
+}
+
+.service_img {
+  width: 340px;
+  height: 200px;
+  object-fit: cover;
+
+}
+
+/*--------------------------------------------------------------
+# Services
+--------------------------------------------------------------*/
+.services .icon-box {
+  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
+  padding: 15px 15px;
+  transition: all ease-in-out 0.4s;
+  background: #fff;
+  border-radius: 11px;
+
+}
+
+.services .icon-box .icon {
+  margin-bottom: 10px;
+}
+
+.services .icon-box .icon i {
+  color: #47b2e4;
+  font-size: 36px;
+  transition: 0.3s;
+}
+
+.services .icon-box h4 {
+  font-weight: 500;
+
+  font-size: 24px;
+}
+
+.services .icon-box h4 a {
+  color: #37517e;
+  transition: ease-in-out 0.3s;
+}
+
+.services .icon-box p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.services .icon-box:hover {
+  transform: translateY(-10px);
+}
+
+.services .icon-box:hover h4 a {
+  color: #47b2e4;
+}
+
+/* service */
+
+#icon-facebook{
+  top: -116px;
+  right: -116px;
+  position: relative;
+}
+
+#icon_laravel {
+  position: relative;
+  left: 136px;
+  bottom: 238px;
+  top: -370px;
+}
+
+#icon_py {
+  position: relative;
+  left: 475px;
+  top: -363px;
+}
+
+#icon_vue {
+  position: relative;
+  left: 101px;
+  bottom: 237px;
+  top: -402px;
+}
+
+#icon_mess {
+  position: relative;
+  left: 330px;
+  bottom: -108px;
+}
+
+@media (max-width: 576px) {
+
+  /* .image_service{
+    visibility: hidden;
+    } */
+  .bi-facebook {
+    left: 209px;
+    bottom: 237px;
+    top: -523px;
+  }
+
+  #icon_laravel {
+    left: 164px;
+    bottom: 238px;
+    top: -357px;
+  }
+
+  #icon_vue {
+
+    left: 145px;
+    top: -403px;
+
+  }
+
+  .service {
+    height: 1144px;
+    top: 0px;
+    background-size: auto 808px;
+
+  }
+
+  .serv_desc {
+    top: 150px;
+  }
+
+  .img_service {
+    left: 235px;
+    width: 230px;
+
+  }
+}
+
+/*--------------------------------------------------------------
+# Clients
+--------------------------------------------------------------*/
+.clients .clients-slider .swiper-slide img {
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.clients .clients-slider .swiper-slide img:hover {
+  opacity: 1;
+}
+
+.clients .clients-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.clients .clients-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #4154f1;
+}
+
+.clients .clients-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #4154f1;
+}
+
+.image_div {
+  top: 25px;
+}
+
+.service_wrap {
+  top: -60px;
+  position: relative;
+}
+
+@media (max-width:992px) {
+  .image_div {
+    top: 124px;
+    left: -155px;
+  }
+
+}
+
+@media (max-width:468px) {
+  .service_wrap {
+    /* top:35px; */
+  }
+}
+
+
+@media(max-width: 576px) {
+  .serv_desc {
+    top: 150px;
+  }
+}
+
+@media(min-width: 577px) and (max-width: 991px) {
+  .serv_desc {
+    top: 225px;
+  }
+}
+
+@media (min-width: 992px) {
+  #services {
+    margin-top: -200px;
+  }
+}

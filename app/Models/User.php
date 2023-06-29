@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
+// use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
@@ -63,5 +64,22 @@ class User extends Authenticatable
     //         dd($this->vendor);
     //     }
     // }
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'user_id');
+    }
 }
+
 //pivot table stays between two tables having many to many relationships
+// public function getCartItemCount(){
+
+// }
+// public function getCartCount($cart_id)
+// {
+//     return CartItem::where('card_id',$card_id)->count();
+// }
+// public function getUsersCart($user_id)
+// {
+//     return Cart::where('user_id',$user_id)
+//         ->where('has');
+// }    

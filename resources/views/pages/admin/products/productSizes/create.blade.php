@@ -24,7 +24,7 @@
                   <form method="POST" action="{{route('product-size.store')}}">
                       @csrf
                     <div class="card-body">
-                      @include('pages.admin.products.productSizes.form')  
+                      @include('pages.admin.products.productSizes.form', ['size'=>$size])  
                     </div>
                     <!-- /.card-body -->
 

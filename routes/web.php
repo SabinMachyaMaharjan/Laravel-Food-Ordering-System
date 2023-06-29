@@ -7,7 +7,6 @@ use App\Http\Controllers\newsweetsController;
 use App\Http\Controllers\MainController as MainController;
 // use App\Http\Controllers\Admin\DashboardController as DashboardController;
 // use App\Http\Controllers\Admin\SliderController as SliderController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +42,9 @@ Auth::routes();
 // Route::get('/test-relation', [NewHomeController::class, 'testRelation']);
 //Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 //Route::resource('/slider', SliderController::class)->middleware('auth');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

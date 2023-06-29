@@ -19,16 +19,16 @@
                         </div>
                     </div>    
                     <div>
-                        @if(isset($sliders))
+                        @if(isset($slider))
                         <div>    
                             <label for="">Current Slider</label>
                             <br>
-                            <img src="{{asset('storage/slider/'.$sliders->slider_image)}}" alt="{{$sliders->slider_image}}" width="150px">
+                            <img src="{{asset('storage/slider/'.$slider->slider_image)}}" alt="{{$slider->slider_image}}" width="150px">
                         </div>
                         @endif
                     </div>             
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" onclick="sweetAlertConfirm(event)">Submit</button>
                       </div>            
 </div>    
 @endsection

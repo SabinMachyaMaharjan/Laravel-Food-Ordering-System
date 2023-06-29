@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Laravel\Sanctum\HasApiTokens;
+
+
 
 class LoginController extends Controller
 {
@@ -19,7 +24,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, HasApiTokens;
 
     /**
      * Where to redirect users after login.
@@ -36,7 +41,7 @@ class LoginController extends Controller
     public function __construct()
     {
         //$this->redirectTo = session()->get('url.intended');
-        $this->middleware('guest')-> except('logout');
+        $this->middleware('guest')->except('logout');
     }
     public function authenticated()
     {
@@ -46,7 +51,7 @@ class LoginController extends Controller
         if(!empty($url) && strpos(config('app.url'), $url) == false){
             return redirect($url);
         } else if (auth()->user()->role->role=='admin') {
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         } else if (auth()->user()->role->role=='vendor') {
             return redirect()->route('vendor.dashboard');
         } else {
@@ -67,4 +72,20 @@ class LoginController extends Controller
         }
         return view('auth.login');
     }
+    public function login (Request $request)
+{
+   if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+       $user= Auth::user();
+        $success['token'] =$user->createToken($user->username . $user->id)-> accessToken; 
+        $success['name']= $user->username;
+     Session::put('token', $success['token']); 
+     Session::put('user', $success['name']); 
+    //  return redirect('/');
+    return $this->authenticated();
+   }
+}
+public function logout(){
+    auth()->logout();
+    return redirect()->route('login')->with('success','You have been successfully logged out');
+}
 }

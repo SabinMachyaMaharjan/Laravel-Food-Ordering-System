@@ -1,9 +1,9 @@
 @extends('layouts.grandLayout')
 @section('page-specific-css')
     <!-- DataTables -->
-  <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <!-- <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-  <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}"> -->
 @endsection
 @section('dashboard-content')
   @php
@@ -13,7 +13,7 @@
   <div class="container-fluid">
   <div class="card">
                 <div class="card-header d-flex justify-content-end">
-                  <a href="/admin/product-size/create" class="btn btn-success">Add Sizes</a>
+                  <a href="{{route('product-size.create')}}" class="btn btn-success">Add Sizes</a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -36,10 +36,10 @@
                                   <td>{{$size->name}}</td>
                                   <td class="d-flex ">
                                     <a href="admin/product-size/{{$size->id}}/edit" class="btn btn-info mr-4">Edit</a>
-                                    <form action="{{route('size.destroy',$size->id)}}" id="size-delete-form" method="post">
+                                    <form action="{{route('product-size.destroy',$size->id)}}" id="size-delete-form" method="post">
                                       @method('DELETE')
                                       @csrf
-                                      <button class="btn btn-danger" type="submit" onClick="sweetAlertConfirm(event), {{$size->id}}">Delete</button>
+                                      <button class="btn btn-danger" type="submit" onclick="sweetAlertConfirm(event)">Delete</button>
                                     </form>
                                   </td>
                               </tr>
@@ -102,9 +102,9 @@
           {
               let ret=false;
               e.preventDefault();
-              console.log('Hi!');
+              //console.log('Hi!');
               Swal.fire({
-              title: 'Are you sure ypu want to delete?',
+              title: 'Are you sure you want to delete?',
               //text: "You won't be able to revert this!",
               icon: 'warning',
               showCancelButton: true,
