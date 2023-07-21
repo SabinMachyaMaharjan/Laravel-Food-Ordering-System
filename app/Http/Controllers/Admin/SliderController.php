@@ -42,7 +42,7 @@ class SliderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\SliderRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(SliderRequest $request)
@@ -85,7 +85,7 @@ class SliderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\SliderRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

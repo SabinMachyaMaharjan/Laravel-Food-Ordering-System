@@ -25,7 +25,8 @@ class SliderRequest extends FormRequest
     {
         return [
             //
-            'name'=>'required|string'
+            'slider_text'=>'required|string',
+            'slider_image' =>'nullable|image|mimes:png,jpg,jpeg,gif'
         ];
     }
 }

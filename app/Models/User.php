@@ -37,15 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
+   
     public function role()
     {
         return $this->belongsTo(Role::class,'role_id','id');
@@ -68,6 +60,23 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Cart::class, 'user_id');
     }
+    public function userDetails()
+{
+    return $this->hasOne(UserDetail::class,'user_id','id');
+}
+
+public function product()
+    {
+        return $this->hasMany(Product::class,'user_id','id');
+    }
+          /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
 
 //pivot table stays between two tables having many to many relationships

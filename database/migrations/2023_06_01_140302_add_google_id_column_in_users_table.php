@@ -15,6 +15,8 @@ class AddGoogleIdColumnInUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->string('google_id')->nullable();
+
         });
     }
 
@@ -27,6 +29,8 @@ class AddGoogleIdColumnInUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn('google_id');
+
         });
     }
 }

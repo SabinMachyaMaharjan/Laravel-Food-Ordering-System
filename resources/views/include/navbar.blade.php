@@ -34,8 +34,12 @@ if(auth()->check())
             <a class="nav-link disabled" href="#">Disabled</a>
         </li> -->
         </ul>
+        <form class="d-flex w-50" action="{{route('search.restaurant')}}" method="GET">
+        <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search" value="{{isset($key)? $key : ''}}">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
         <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ms-auto" style="float:right;">
+        <ul class="navbar-nav me-auto" >
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -50,7 +54,7 @@ if(auth()->check())
                                 </li>
                             @endif
                         @else
-                        <li class="nav-item dropdown d-flex align-self-center me-2">
+                        <li class="nav-item dropdown d-flex align-self-right me-2">
                             <a href="#" class="position-relative">
                               <i class="fa-solid fa-cart-plus"></i>
                               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -72,7 +76,7 @@ if(auth()->check())
                                         </a>
                                     @elseif (auth()->user()->role->role=='vendor')  
                                         <a class="dropdown-item" href="{{ route('vendor.dashboard') }}"> 
-                                                Dashboard
+                                            Dashboard
                                         </a>  
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -88,3 +92,4 @@ if(auth()->check())
                     </ul>
   </div>
 </nav>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

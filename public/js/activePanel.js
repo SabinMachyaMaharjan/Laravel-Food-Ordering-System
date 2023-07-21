@@ -9,8 +9,8 @@ $(document).ready(function() {
     let cls = c[length];
     $('#${cls}').addClass("active");
     if(cls=='product-size') {
-        $("#product").addClass("menu-open");
+        $("#products").addClass("menu-open");
     } else if (cls=='approved-vendors' || cls=='pending-vendors') {
-        $("#vendor").addClass("menu-open");
+        $("#vendors").addClass("menu-open");
     }
 });

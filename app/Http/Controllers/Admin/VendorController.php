@@ -62,5 +62,18 @@ class VendorController extends Controller
         $response=$this->vendorService->rejectVendor($id);
         Alert::toast($response['message'], $response['status']);
         return redirect('/admin/pending-vendors');
-    }    
+    } 
+       
+    public function deleteapprovedvendor($id){
+        $response = $this->vendorService->deleteApprovedVendor($id);
+        Alert::toast($response["message"],$response["status"]);
+        return redirect(route('approvedvendors.index'));
+    }
+
+    public function checkstatusvendor($id)
+    {
+        $response = $this->vendorService->checkstatusvendor($id);
+        Alert::toast($response["message"],$response["status"]);
+        return redirect(route('approvedvendors.index'));
+    }
 }

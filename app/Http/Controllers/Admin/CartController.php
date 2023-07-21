@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
 use App\Services\CartService;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -42,4 +43,16 @@ if (!empty($product)) {
 // 3. insert into cart items
     return response()->json($response,$response[ 'statusCode' ]);
 }
+public function cartCheckout (Request $request)
+    {
+          // 1. has_checkout 1 
+    //   dd($request->all()); 
+        $inputs= $request->all(); 
+    //   $res= $this->cartService->checkoutCart($inputs);
+      // 2. mail to customer\
+      $response = $this->cartService->checkoutCart($inputs);
+      // dd($response["message"]);
+      Alert::toast($response["message"],$response["status"]);
+      return redirect()->back();   
+    }
 }

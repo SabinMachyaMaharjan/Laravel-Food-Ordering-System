@@ -1,7 +1,14 @@
 @extends('layouts.grandLayout')
+@section('page-specific-css')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 
+  <!-- <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}"> -->
+@endsection
 @section('dashboard-content')
-<!-- <div class="container-fluid"> -->
+<div class="content pt-4">
            <!-- general form elements -->
     <!-- @if(isset($errors) && count($errors)>0)
       {{dd($errors)}} 
@@ -12,127 +19,80 @@
     <div class="container-fluid">
     <div class="row">
     <div class="col-md-12">
-            <div class="white-box">
-                <h3 class="box-title">Add Slider</h3>
-                <div class="form">
+    <div class="card">
+    <div class="card-header" data-background-color="yellow">
+                            <h4 class="title">Add Slider</h4>
+                        </div>
+
+                            <div class="card-content">
               
               <!-- /.card-header -->
               <!-- form start -->
               <form method="POST" action="{{route('slider.store')}}" enctype="multipart/form-data">
                 <!-- @method('PUT') -->
                 @csrf
-                  <!-- <div class="card-body">
-                  @include('pages.admin.slider.form')  
-                  <div class="container-fluid"> -->
-    <div class="mb-3">
-                        <label for="slider-text">Slider text</label>
-                        <input type="text" class="form-control" id="slider-text" name="slider_text" placeholder="Enter name" value="{{isset($slider)? $slider->slider_text : ''}}">
-    </div>
-                    <div class="mb-3">
-                        <label for="slider-image">File input</label>
-                        <div class="form-label">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="slider-image" name="slider_image">
-                                <label class="custom-file-label" for="slider-image">Choose file</label>
+                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating" style="margin-left: 5px;margin-right:5px;">
+                                            <label class="control-label" for="slider-text-id">Slider text</label>
+                                            <input type="text" class="form-control " name="slider_text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="control-label label-floating" for="slider-image" style="margin-left:5px;margin-right:5px;">Image input</label>
+                                        <input type="file"  id="slider-image" name="slider_image" style="padding: 5px;border-radius:2px;">
+                                <!-- <label class="control-label" for="slider-image">Choose file</label> -->
+                              </div>
                             </div>
-                            <!-- <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
-                            </div> -->
-                        </div>
-                    </div>    
-                    <div>
-                        @if(isset($slider))
-                        <div>    
-                            <label for="slider">Current Slider</label>
-                            <br>
-                            <img src="{{asset('storage/slider/'.$slider->slider_image)}}" alt="{{$slider->slider_image}}" width="150px">
-                        </div>
-                        @endif
-                    </div>             
+                            <div>
+                                @if(isset($slider))
+                                <div>    
+                                    <label for="slider">Current Slider</label>
+                                    <br>
+                                    <img src="{{asset('storage/slider/'.$slider->slider_image)}}" alt="{{$slider->slider_image}}" width="150px">
+                                </div>
+                                @endif
+                            </div>             
+                           {{-- 
+                            <!-- <div class="card-body">
+                              @include('pages.admin.slider.form')  
+                              <div class="container-fluid"> -->
+                                --}}
+                                <br>  
+                                <a href="{{ route('slider.index') }}" class="btn btn-danger ps-4" style="margin-left: 5px;margin-right:5px;margin-bottom:5px;">Back</a>
+                  <button type="submit" class="btn btn-primary ps-4" style="margin-left: 5px;margin-right:5px;margin-bottom:5px;" onclick="sweetAlertConfirm(event)">Submit</button>
+                                
+  
                        
-                <!-- /.card-body -->
-                
-                <div class="mb-3">
-                  <button type="submit" class="btn btn-primary" onclick="sweetAlertConfirm(event)">Submit</button>
-                </div>
+                           
               </form>
               </div>
-
     </div>
             <!-- /.card -->
 </div>    
     </div>  
     </div>
-    <div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Start Page Content -->
-    <!-- ============================================================== -->
-    <div>
-      <a href="/admin/portfolio" class="btn btn-info text-white mb-3"><i class="fas fa-angle-left"></i> Back</a>
-    </div>
-    <div class="row">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+</div>   
 
-        <div class="col-md-12">
-            <div class="white-box">
-                <h3 class="box-title">Create New Portfolio</h3>
-
-                <div class="form">
-                    <form action="#" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="mb-3">
-                          <label for="exampleInputName" class="form-label">Project Name<span style="color:#ff9933;">*</span></label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="ex: 7thirteensalon" value="{{old('name')}}">
-                        </div>
-                        <div class="mb-3">
-                          <label for="proj_url" class="form-label">Project Url<span style="color:#ff9933;">*</span></label>
-                          <input type="text"  name="link" class="form-control" id="proj_url" placeholder="ex: https://7thirteensalon.com/" value="{{old('link')}}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="proj_desc" class="form-label">Project description<span style="color:#ff9933;">*</span></label>
-                            <textarea  name="description" class="form-control" id="proj_desc" placeholder="ex: 7thirteensalon is a Salon Management System...">{{old('description')}}</textarea>
-                          </div>
-                          <div class="mb-3">
-                            <label for="proj_cat" class="form-label">Project Category<span style="color:#ff9933;">*</span></label>
-                            <select id="proj_cat" name="category" class="form-select" aria-label="Default select example">
-                              <option selected>Select Project Category</option>
-                              <option value="app" {{ (old('category') == 'app' ?'selected':'')}}>Applications</option>
-                              <option value="digital" {{ (old('category')== 'digital' ?'selected':'')}} >Digital Marketing</option>
-                              <option value="portfolio" {{ (old('category')== 'portfolio' ?'selected':'')}}>Portfolio</option>
-                              <option value="graphics" {{ (old('category')== 'graphics' ?'selected':'')}} >Graphics</option>
-                              <option value="other" {{ (old('category')== 'other'?'selected':'')}}>Other</option>
-                            </select>
-                          </div>
-                          <div class="mb-3">
-                            <label for="proj_tech" class="form-label">Technology Used<span style="color:#ff9933;">*</span></label>
-                            <input type="text"  name="tech_used" class="form-control" id="proj_tech" placeholder="Laravel, JS, HTML..." value="{{old('tech_used')}}">
-                          </div>
-                          <div class="mb-3">
-                            <label for="proj_tech" class="form-label">Renew Date(A.D)<span style="color:#ff9933;">*</span></label>
-                            <input type="text"  name="renewal_date" class="form-control" id="date" placeholder="Ex:2021-03-25" value="{{old('renewal_date')}}">
-                          </div>
-                          <div class="mb-3">
-                            <label for="formFile" class="form-label">Project Image<span style="color:#ff9933;">*</span></label>
-                            <input class="form-control" type="file" id="formFile" name="image">
-                          </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 @section('page-specific-js')
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/jszip/jszip.min.js')}}"></script>
+    <script src="{{asset('plugins/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{asset('plugins/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
   <script>
     function sweetAlertConfirm(e)
     {

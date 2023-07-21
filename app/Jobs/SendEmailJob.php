@@ -1,23 +1,37 @@
 <?php
 
 namespace App\Jobs;
-
+use App\Mail\SendVendorEmail;
+use App\Mail\SendOrderEmail;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Carbon\Traits\Serialization;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-
-class SendEmailJob
+use App\Helpers\EmailHelper;
+class SendEmailJob implements ShouldQueue
 {
-    use Dispatchable;
-
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    public $email, $full_name, $cart,$subject;
+    public $tries=3;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
         //
+        //$this->data= $data;
+        $this->email = $data['email']; 
+$this->full_name =$data['full_name']; 
+$this->cart= $data['cart'];
+$this->subject = $data['subject'];
     }
 
     /**
@@ -29,10 +43,10 @@ class SendEmailJob
     {
         //
         try{
-            Mail::to('alli1111@gmail.com')->send(new SendOrderEmail());
-            Log::info("Test email");
+            Mail::to($this->email)->send(new SendOrderEmail($this->full_name, $this->cart, $this->subject));
+            Log::info("Mail Sent!");
         } catch(\Throwable $e) {
-            
+            Log::error($e->getMessage());
         }
     }
 }

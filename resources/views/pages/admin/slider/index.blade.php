@@ -1,6 +1,8 @@
 @extends('layouts.grandLayout')
 @section('page-specific-css')
     <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+
   <!-- <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}"> -->
@@ -44,7 +46,7 @@
                                   <form action="{{route('slider.destroy',$slider->id)}}" id="slider-delete-form" method="post">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger" type="submit" onclick="sweetAlertConfirm(event),{{$slider->id}}">Delete</button>
+                                    <button class="btn btn-danger" type="submit" onclick="sweetAlertConfirm(e,$id)">Delete</button>
                                   </form>
                                 </td>
                             </tr>
@@ -71,6 +73,9 @@
 @endsection
 @section('page-specific-js')
     <!-- DataTables  & Plugins -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
@@ -83,7 +88,6 @@
     <script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- Page specific script -->
     <script>
         $(function () {
@@ -110,7 +114,7 @@
             e.preventDefault();
             console.log('Hi!');
             Swal.fire({
-            title: 'Are you sure ypu want to delete?',
+            title: 'Are you sure you want to delete?',
             //text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,

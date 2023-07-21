@@ -51,9 +51,9 @@ class LoginController extends Controller
         if(!empty($url) && strpos(config('app.url'), $url) == false){
             return redirect($url);
         } else if (auth()->user()->role->role=='admin') {
-            return redirect()->route('admin.dashboard');
+            return redirect('/');//->route('admin.dashboard');
         } else if (auth()->user()->role->role=='vendor') {
-            return redirect()->route('vendor.dashboard');
+            return redirect('/')->route('vendor.dashboard');
         } else {
             return redirect('/');
         }
@@ -83,9 +83,12 @@ class LoginController extends Controller
     //  return redirect('/');
     return $this->authenticated();
    }
+   else{
+    return redirect("/login")->withErrors(["email"=>"Entered credential is not matched!"]);
+}
 }
 public function logout(){
     auth()->logout();
-    return redirect()->route('login')->with('success','You have been successfully logged out');
+    return redirect()->route('/login')->with('success','You have been successfully logged out');
 }
 }

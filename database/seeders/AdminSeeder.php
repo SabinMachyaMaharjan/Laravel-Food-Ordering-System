@@ -20,10 +20,10 @@ class AdminSeeder extends Seeder
         //
         $user = [
             'username'=>'Admin',
-            'email' => config('app.admin_email'),
+            'email' => config('adminCreds.admin_email'),
             'password' => Hash::make(config('adminCreds.admin_password')),
             'role_id' => 1,
-            'email_verified' => Carbon::now()
+            'email_verified_at' => Carbon::now()
         ];
         User::create($user); 
     }

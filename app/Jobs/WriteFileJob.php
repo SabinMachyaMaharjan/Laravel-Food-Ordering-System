@@ -38,6 +38,6 @@ class WriteFileJob implements ShouldQueue
         $file=fopen(storage_path('app/test.txt'),'w');
         fwrite($file,'Hello World');
         fclose($file);
-        // dd('file created');
+        dd('file created');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.grandLayout')
+<!-- @extends('layouts.grandLayout')
 
 @section('dashboard-content')
 <div class="container-fluid">
@@ -31,4 +31,4 @@
                         <button type="submit" class="btn btn-primary" onclick="sweetAlertConfirm(event)">Submit</button>
                       </div>            
 </div>    
-@endsection
+@endsection -->

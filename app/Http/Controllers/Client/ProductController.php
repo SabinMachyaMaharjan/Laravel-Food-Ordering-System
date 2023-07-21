@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Services\SizeService;
 use App\Services\ProductService;
@@ -18,9 +19,9 @@ class ProductController extends Controller
      */
     private $sizeService;
     private $productService;
-    public function __construct(SizeService $service,ProductService $productService)
+    public function __construct(SizeService $size,ProductService $productService)
     {
-        $this->sizeService=$service;
+        $this->sizeService=$size;
         $this->productService=$productService;
     }
     public function index()
@@ -79,6 +80,7 @@ class ProductController extends Controller
     {
         //
         //dd($id);
+        $sizes = $this->sizeService->findAll();
         $products=$this->productService->findAllProductsByUserId($userid);
         return view('pages.client.products.edit',compact('products'));
     }
@@ -113,6 +115,7 @@ class ProductController extends Controller
         //dd($id);
         //product::where($id);
         $response=$this->productService->deleteRecordById($userid);
+        Alert::toast($response["message"],$response["status"]);
         return redirect('/vendor/product/{product}')->with($response['status'],$response['message']);
     }
 }

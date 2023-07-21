@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['key' => !empty($key)? $key : ''])
 
 @section('content')
     @php
@@ -9,14 +9,16 @@
     @endphp    
     @if(auth()->check() && auth()->user()->is_vendor==1)
         @if(isset($is_approved) && !$is_approved)
+        <div class="container">
             <div class="alert alert-info">
                 Your vendor approval request is being processed. Thank you for have patience.
             </div>
+        </div>
         @endif
     @endif
+    <div class="bg-gray col-md-12">
     <div class="container-sm">
-        <div class="bg-gray col-md-12">
-            <div class="p-5">
+            <div class="py-5">
                 <h2>Restaurants and Store</h2>
             </div>
         </div>

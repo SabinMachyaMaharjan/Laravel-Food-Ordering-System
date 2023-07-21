@@ -65,4 +65,46 @@ class VendorService
             return ['status'=>'error','message'=>$e->getMessage()];
         }
     }
+    public function searchVendor ($inputs)
+    { 
+        //  $restaurants =User::with(['vendor', 'products']); 
+        //  $restaurants = $restaurants->whereHas('vendor', function($query) use ($inputs) { 
+        //           $query->where('vendor.brand_name', 'LIKE', '%'.$inputs ['search'].'%') 
+        //                     ->orwhere('vendor.service', 'LIKE', '%'.$inputs ['search'].'%');
+        //  })
+        //  ->orWhereHas('products', function ($query) use ($inputs) { 
+        //                              $query->where('products.name', 'LIKE', '%'.$inputs ['search'].'%') 
+        //                                                 ->where('products.status', 'Available');
+        //  })
+             // ->selectRaw() 
+//              ->join('vendors', 'users.id', 'vendors.user_id')
+// ->selectRaw('vendors.*')
+//              ->orderBy('created_at', 'DESC')
+//      ->get();
+     $restaurants =Vendor::with(['user.products:name,status'])
+     ->where (function ($query) use ($inputs) { 
+        $query->where('brand_name', 'LIKE', '%'.$inputs['search'].'%')
+                           ->orWhere('service', 'LIKE', '%'.$inputs['search'].'%');
+})
+->orWhereHas('user.products',function ($query) use ($inputs) { 
+$query->where('name', 'LIKE', '%'.$inputs['search'].'%')
+ ->orWhere('status','Available');
+})
+->orderBy('created_at','DESC' )
+->get();
+// we are just getting vendor columns, products 
+// join
+// $vendor =Vendor::query();
+// $vendor->join('users', 'users.id', 'vendors.user_id') 
+//       ->join('products', 'products.user_id", "users.id') 
+//       ->selectRaw('vendors.brand name', 'products.name', 'users.username')
+//     ->get();
+    //  dd($restaurants);
+    return $restaurants;
+    // lazy loading 
+// $user->vendor>brand_name 
+//select> select specific columns 
+// selectRau -> handles raw sal query
+// select sum ('total') from products;
+        }
 }
